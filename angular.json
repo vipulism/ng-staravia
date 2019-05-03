@@ -78,7 +78,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/particles.js/particles.js"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"
