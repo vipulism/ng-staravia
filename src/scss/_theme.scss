@@ -533,10 +533,18 @@ a:hover{
      [ 04 Start Header ]
 -----------------------------------------------------------------*/
 
+.reset-width{
+  width: unset !important;
+}
+
 .header{
 	min-height: 100vh;
 	position: relative;
-
+	
+	&.small-hdr{
+    min-height: 60vh;
+	}
+	
 	&.video{
 		overflow: hidden;
 	}

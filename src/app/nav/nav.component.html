@@ -1,4 +1,4 @@
-    
+
     <nav class="navbar navbar-expand-lg">
       <div class="container">
 
@@ -15,20 +15,20 @@
           <!-- navbar links -->
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
-                  <li class="nav-item">
-                      <a class="nav-link active" href="index.html">Home</a>
+                  <li class="nav-item"> 
+                      <a class="nav-link"  [class.active]="router.url === '/'" [routerLink]="['/']" >Home</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="about-us.html">About Us</a>
+                      <a class="nav-link"  [class.active]="router.url === '/about'" [routerLink]="['/about']">About Us</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="services.html" >Product & Services</a>
+                      <a class="nav-link" [class.active]="router.url === '/product-and-services'" [routerLink]="['/product-and-services']" >Product & Services</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="#" >Blog</a>
+                      <a class="nav-link" [class.active]="router.url === '/blog'" [routerLink]="['/blog']" >Blog</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="contact.html">Contact</a>
+                      <a class="nav-link" [class.active]="router.url === '/contact'" [routerLink]="['/contact']">Contact</a>
                   </li>
               </ul>
           </div>

@@ -1,5 +1,24 @@
 
-    <header class="header valign bg-img" data-scroll-index="0" data-overlay-dark="7" data-background="assets/img/bg3.jpg"
+     <header *ngIf="content && !content.particels" class="header small-hdr valign bg-img" data-scroll-index="0" data-overlay-dark="7" data-background="assets/img/bg3.jpg" data-stellar-background-ratio="0.5">
+ 
+        <div class="container">
+            <div class="text-center caption mt-30">
+                <div class="row">
+                    <div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
+                            <h4 class="cd-headline">
+                                    <span class="blc"> {{content.title[0].lightTxt || ''}} </span>
+                                    <span class="cd-words-wrapper reset-width" >
+                                        <b class="is-visible">{{content.title[0].boldTxt || ''}} </b>
+                                    </span>
+                                </h4>
+                        <p>{{ content.subTitle || 'We are a passionate digital design agency that specializes in beautiful and easy-to-use digital  design & web development services.'}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <header *ngIf="content && content.particels" onload="particlesInit()" class="header valign bg-img" data-scroll-index="0" data-overlay-dark="7" data-background="assets/img/bg3.jpg"
     data-stellar-background-ratio="0.5">
 
     <!-- particles -->
@@ -7,7 +26,7 @@
 
     <div class="container">
         <div class="text-center caption mt-30">
-            <h5>We supply & repair of spares</h5>
+            <h5>{{content.particles }}We supply & repair of spares</h5>
             <h4 class="cd-headline clip">
                 <span class="blc"> Russian Origin </span>
                 <span class="cd-words-wrapper">
@@ -33,3 +52,4 @@
 
     <div class="curve curve-bottom curve-center"></div>
 </header>
+

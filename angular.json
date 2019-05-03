@@ -79,7 +79,8 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "node_modules/particles.js/particles.js"
+              "node_modules/particles.js/particles.js", 
+              "node_modules/isotope-layout/dist/isotope2.js"
             ],
             "assets": [
               "src/favicon.ico",

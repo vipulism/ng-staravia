@@ -1,5 +1,12 @@
+import { HeaderData } from './services/HeaderData';
+import { HeaderService } from './services/header.service';
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import * as $ from 'jquery';
+import { Subscription } from 'rxjs';
+import 'particles.js/particles';
 
+declare var particlesJS: any;
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -7,9 +14,175 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  routerParamsSubs: Subscription;
+  smallHeader: boolean = false;
+  content: HeaderData;
+
+  constructor(public router: Router,
+    private route: ActivatedRoute,
+    private headerService: HeaderService) { }
+
+
+
+  headerBg() {
+    var pageSection = $(".bg-img, section");
+    pageSection.each(function (indx) {
+
+      if ($(this).attr("data-background")) {
+        $(this).css("background-image", "url(" + $(this).data("background") + ")");
+      }
+    });
+
+
+  }
 
   ngOnInit() {
+
+    this.headerService.hdrContentObs.subscribe((data) => {
+      this.content = data;
+      
+      if (this.content.particels) {
+       const time = setTimeout(() => {
+        this.headerBg();
+        this.particlesInit();
+        clearTimeout(time);
+       }, 10);
+      }else{
+        const time = setTimeout(() => {
+          this.headerBg();
+          clearTimeout(time);
+         }, 10);
+      }
+
+    });
   }
+
+
+  particlesInit() {
+
+    particlesJS('particles-js',
+
+      {
+        "particles": {
+          "number": {
+            "value": 50,
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": "#888"
+          },
+          "shape": {
+            "type": "circle",
+            "stroke": {
+              "width": 0,
+              "color": "#888"
+            },
+            "polygon": {
+              "nb_sides": 5
+            },
+            "image": {
+              "src": "img/github.svg",
+              "width": 100,
+              "height": 100
+            }
+          },
+          "opacity": {
+            "value": 0.8,
+            "random": false,
+            "anim": {
+              "enable": false,
+              "speed": 3,
+              "opacity_min": 0.1,
+              "sync": false
+            }
+          },
+          "size": {
+            "value": 5,
+            "random": true,
+            "anim": {
+              "enable": false,
+              "speed": 40,
+              "size_min": 0.1,
+              "sync": false
+            }
+          },
+          "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": "#888",
+            "opacity": 0.4,
+            "width": 1
+          },
+          "move": {
+            "enable": true,
+            "speed": 6,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out",
+            "attract": {
+              "enable": false,
+              "rotateX": 600,
+              "rotateY": 1200
+            }
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": true,
+              "mode": "repulse"
+            },
+            "onclick": {
+              "enable": true,
+              "mode": "push"
+            },
+            "resize": true
+          },
+          "modes": {
+            "grab": {
+              "distance": 400,
+              "line_linked": {
+                "opacity": 1
+              }
+            },
+            "bubble": {
+              "distance": 400,
+              "size": 40,
+              "duration": 2,
+              "opacity": 8,
+              "speed": 3
+            },
+            "repulse": {
+              "distance": 200
+            },
+            "push": {
+              "particles_nb": 4
+            },
+            "remove": {
+              "particles_nb": 2
+            }
+          }
+        },
+        "retina_detect": true,
+        "config_demo": {
+          "hide_card": false,
+          "background_color": "#b61924",
+          "background_image": "",
+          "background_position": "50% 50%",
+          "background_repeat": "no-repeat",
+          "background_size": "cover"
+        }
+      }
+
+    );
+  }
+
+    
+
 
 }
