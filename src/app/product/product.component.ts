@@ -3,7 +3,7 @@ import { HeaderService } from './../header/services/header.service';
 import { Component, OnInit } from '@angular/core';
 // import * as $ from 'jquery';
 // import 'isotope-layout/js/isotope';
-import Isotope from 'isotope-layout/dist/isotope2';
+import Isotope from 'isotope-layout/dist/isotope.pkgd';
 // import Isotope from 'isotope-layout';
 // declare var Isotope: any;  
 

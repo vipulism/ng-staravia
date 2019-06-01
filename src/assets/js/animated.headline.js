@@ -14,7 +14,7 @@ jQuery(document).ready(function($){
 		revealDuration = 600,
 		revealAnimationDelay = 1500;
 	
-	initHeadline();
+	// initHeadline();
 	
 
 	function initHeadline() {
